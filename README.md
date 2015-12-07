@@ -30,6 +30,30 @@ console.log(injectedString);
  </table>
 ```
 
+## API Notes
+
+- Simply supply the `inject()` method with an object where the object keys are the tags you want to target, and the values are the styles you want to inject into those targets. 
+
+For example, to inject the style `background-color:#000` into all of the `<li>` tags in your string:
+
+```js
+var StyleInjector = require('inject-tag-style');
+
+var styles = {li:'background-color:#000'};
+var ulString = '<ul><li>FOO</li<li>BAR</li></ul>';
+
+var injectedString = StyleInjector().inject(styles).into(ulString);
+//=> <ul><li style='background-color:#000'>FOO</li<li style='background-color:#000'>BAR</li></ul>
+```
+
+- You will want to write your styles out exactly how you want them to appear in the style tag. 
+
+## General Notes
+
+- This module does not validate or modify your CSS styles for you.
+- If your HTML string has an existing style attribute, then the styles you supply will be appended to the existing styles.  
+
+
 
 ## License
 
