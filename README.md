@@ -1,6 +1,6 @@
-# inject-tag-style [![Build Status](https://travis-ci.org/radiovisual/inject-tag-style.svg)](https://travis-ci.org/radiovisual/inject-tag-style)
+# inject-tag-style [![Build Status](https://travis-ci.org/radiovisual/inject-tag-style.svg?branch=master)](https://travis-ci.org/radiovisual/inject-tag-style)
 
-> Inject inline styles into the tags of an HTML string.
+> Inject styles into the tags of an HTML string.
 
 ## Installation
 
