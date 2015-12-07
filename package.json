@@ -1,0 +1,38 @@
+{
+  "name": "inject-inline-style",
+  "version": "0.0.1",
+  "description": "Inject inline styles into the tags of an HTML string.",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radiovisual/inject-inline-style.git"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "inject",
+    "inline",
+    "styles",
+    "css",
+    "html",
+    "tags",
+    "string"
+  ],
+  "author": "Michael Wuergler <senjudev@gmail.com> (http://numetriclabs.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radiovisual/inject-inline-style/issues"
+  },
+  "homepage": "https://github.com/radiovisual/inject-inline-style#readme",
+  "devDependencies": {
+    "ava": "^0.7.0"
+  },
+  "dependencies": {
+    "object-assign": "^4.0.1",
+    "simple-html-tokenizer": "^0.2.0"
+  }
+}
