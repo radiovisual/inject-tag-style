@@ -1,4 +1,4 @@
-# inject-inline-style
+# inject-inline-style [![Build Status](https://travis-ci.org/radiovisual/inject-inline-style.svg)](https://travis-ci.org/radiovisual/inject-inline-style)
 
 > Inject inline styles into the tags of an HTML string.
 
