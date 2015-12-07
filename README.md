@@ -1,17 +1,17 @@
-# inject-inline-style [![Build Status](https://travis-ci.org/radiovisual/inject-inline-style.svg)](https://travis-ci.org/radiovisual/inject-inline-style)
+# inject-tag-style [![Build Status](https://travis-ci.org/radiovisual/inject-tag-style.svg)](https://travis-ci.org/radiovisual/inject-tag-style)
 
 > Inject inline styles into the tags of an HTML string.
 
 ## Installation
 
 ```
-$ npm install --save inject-inline-style
+$ npm install --save inject-tag-style
 ```
 
 ## Usage
 
 ```js
-var StyleInjector = require('inject-inline-style');
+var StyleInjector = require('inject-tag-style');
 
 var styles = { table:'width:100%', td:'width:50%'};
 var HTMLString = '<table><tr><td>ONE</td><td>TWO</td></tr></table>';
@@ -33,5 +33,5 @@ console.log(injectedString);
 
 ## License
 
-MIT @ [Michael Wuergler](http:numetriclabs.com)
+MIT @ [Michael Wuergler](http://numetriclabs.com)
 
