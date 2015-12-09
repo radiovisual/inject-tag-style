@@ -30,6 +30,25 @@ console.log(injectedString);
  </table>
 ```
 
+## API
+
+### StyleInjector().inject(options).into(string)
+
+### .inject(options);
+
+- Sets the inject targets and styles
+    - Parameter Type: `object`
+    - Object keys are the HTML tags you want to target, and the values are the styles you want to inject.
+    - Example (inject color into all the span tags): `{ span: 'color:#fff;' }`
+    - required
+
+### .into(string);
+
+- Sets the HTML string you want to inject styles into.
+    - Parameter Type: `string`
+    - Example: `'<span></span>'`
+
+
 ## API Notes
 
 - Simply supply the `inject()` method with an object where the object keys are the tags you want to target, and the values are the styles you want to inject into those targets. 

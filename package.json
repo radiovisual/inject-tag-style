@@ -1,6 +1,6 @@
 {
   "name": "inject-tag-style",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Inject inline styles into the tags of an HTML string.",
   "main": "index.js",
   "scripts": {
