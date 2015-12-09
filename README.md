@@ -32,21 +32,34 @@ console.log(injectedString);
 
 ## API
 
-### StyleInjector().inject(options).into(string)
+### StyleInjector().inject(styles, [options]).into(string)
 
-### .inject(options);
+### .inject(styles, options);
 
 - Sets the inject targets and styles
-    - Parameter Type: `object`
-    - Object keys are the HTML tags you want to target, and the values are the styles you want to inject.
-    - Example (inject color into all the span tags): `{ span: 'color:#fff;' }`
-    - required
 
-### .into(string);
+#### styles
+- Type: `object`
+- Object keys are the HTML tags you want to target, and the values are the styles you want to inject.
+- Example: `{ span: 'color:#fff;' }`
+- required
+    
+#### options
+- Type: `object`
+- Sets the inject options:
+
+    - **overwrite**
+    - Type: `Boolean`
+    - A setting of `true` will overwrite any existing styles on the target
+    - Example: `.inject({li:'color:red'}, {overwrite:true}).into('<ul><li></li></ul>')`
+    - Default: `false`
+
+### .into(string)
 
 - Sets the HTML string you want to inject styles into.
     - Parameter Type: `string`
-    - Example: `'<span></span>'`
+    - Example: `.into('<span></span>')`
+    - required
 
 
 ## API Notes
@@ -70,7 +83,7 @@ var injectedString = StyleInjector().inject(styles).into(ulString);
 ## General Notes
 
 - This module does not validate or modify your CSS styles for you.
-- If your HTML string has an existing style attribute, then the styles you supply will be appended to the existing styles.  
+- If your HTML string has an existing style attribute, then the styles you supply will be appended to the existing styles, unless you supply `overwrite:true` to the [inject options](https://github.com/radiovisual/inject-tag-style#options).  
 
 
 

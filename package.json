@@ -1,6 +1,6 @@
 {
   "name": "inject-tag-style",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Inject inline styles into the tags of an HTML string.",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,7 @@
     "ava": "^0.7.0"
   },
   "dependencies": {
+    "condense-whitespace": "^1.0.0",
     "object-assign": "^4.0.1",
     "simple-html-tokenizer": "^0.2.0"
   }

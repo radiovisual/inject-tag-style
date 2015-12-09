@@ -1,6 +1,7 @@
 'use strict';
 var HTML5Tokenizer = require('simple-html-tokenizer');
 var objectAssign = require('object-assign');
+var condense = require('condense-whitespace');
 
 /**
  * Init a new StyleInjector
@@ -24,22 +25,28 @@ module.exports = StyleInjector;
 /**
  * Inject the style object
  *
+ * @param {Object} styles
  * @param {Object} options
  * @returns {StyleInjector}
  * @api public
  */
 
-StyleInjector.prototype.inject = function(options){
+StyleInjector.prototype.inject = function(styles, options){
 
-    this.targetStyles = objectAssign({}, options);
-    this.targetTags = Object.keys(options);
+    this.targetStyles = objectAssign({}, styles);
+    this.targetTags = Object.keys(styles);
+
+    options = options || {};
+    this.options = objectAssign({}, options);
+    this.options.overwrite = this.options.overwrite || false;
+
     return this;
 };
 
 /**
  * Set the HTML string to inject into.
  *
- * @param string - the HTML string to inject styles into.
+ * @param {String} string - the HTML string to inject styles into.
  * @returns {String}
  * @api public
  */
@@ -121,7 +128,7 @@ StyleInjector.prototype.openTag = function(tagName, attributes, selfClosing){
 
     var closing = selfClosing ? '/>' : '>';
 
-    var attrString = buildAttributesString(attributes, stylesToInject);
+    var attrString = buildAttributesString(attributes, stylesToInject, this.options);
 
     var spacer = attrString.length > 0 ? ' ' : '';
 
@@ -134,11 +141,12 @@ StyleInjector.prototype.openTag = function(tagName, attributes, selfClosing){
  *
  * @param {Array} attributes
  * @param {String} stylesToInject - the string of styles to inject into the attributes string
+ * @param {Object} options - options to consider when building the string
  * @returns {string}
  * @api private
  */
 
-function buildAttributesString(attributes, stylesToInject){
+function buildAttributesString(attributes, stylesToInject, options){
 
     var s = '';
 
@@ -149,14 +157,16 @@ function buildAttributesString(attributes, stylesToInject){
     attributes.map(function(item, index){
 
         // Check for an existing style attribute
-        if (item[0] === 'style'){
+        if (item[0] === 'style') {
 
             var style = item[1];
             var sep = style.charAt(style.length - 1) === ";" ? '' : ';';
             styleString += (style + sep);
 
-            if (stylesToInject){
+            if (options.overwrite === false) {
                 styleString += stylesToInject;
+            } else {
+                styleString = 'style="' + stylesToInject;
             }
 
             styleString += '"';
@@ -187,7 +197,7 @@ function buildAttributesString(attributes, stylesToInject){
         s += ' ';
     }
 
-    return s += styleString;
+    return condense(s += styleString);
 }
 
 /**

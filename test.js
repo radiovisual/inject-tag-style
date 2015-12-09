@@ -48,3 +48,20 @@ test('works with self-closing tags', t => {
     t.is(injectedString, output);
 
 });
+
+test('allows overwrite of existing styles', t => {
+
+    var styles = { input:'background-color:white' };
+    var input  = '<input type="text" value="test" id="textID" style="color:black;background-color:red;" />';
+    var output1 = '<input type="text" value="test" id="textID" style="background-color:white"/>';
+    var output2 = '<input type="text" value="test" id="textID" style="color:black;background-color:red;background-color:white"/>';
+
+    let injectedString1 = StyleInjector().inject(styles, {overwrite:true}).into(input);
+    let injectedString2 = StyleInjector().inject(styles, {overwrite:false}).into(input);
+    let injectedString3 = StyleInjector().inject(styles).into(input);
+
+    t.is(injectedString1, output1);
+    t.is(injectedString2, output2);
+    t.is(injectedString3, output2);
+
+});
