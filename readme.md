@@ -36,47 +36,56 @@ console.log(injectedString);
 
 ### .inject(styles, options);
 
-- Sets the inject targets and styles
+Sets the inject targets and styles.
 
 #### styles
-- Type: `object`
-- Object keys are the HTML tags you want to target, and the values are the styles you want to inject.
-- Example: `{ span: 'color:#fff;' }`
-- required
+
+Type: `object`   
+Example: `{ span: 'color:#fff;' }`  
+__required__  
+
+Object keys are the HTML tags you want to target, and the values are the styles you want to inject.
+
     
 #### options
-- Type: `object`
-- Sets the inject options:
 
-    - **overwrite**
-    - Type: `Boolean`
-    - A setting of `true` will overwrite any existing styles on the target
-    - Example: `.inject({li:'color:red'}, {overwrite:true}).into('<ul><li></li></ul>')`
-    - Default: `false`
+Type: `object`  
+
+Sets the inject options.
+
+##### overwrite
+
+A setting of `true` will overwrite any existing styles on the target.
+
+Type: `Boolean`  
+Default: `false`  
+Example: `.inject({li:'color:red'}, {overwrite:true}).into('<ul><li></li></ul>')`  
+
 
 ### .into(string)
 
-- Sets the HTML string you want to inject styles into.
-    - Parameter Type: `string`
-    - Example: `.into('<span></span>')`
-    - required
+Sets the HTML string you want to inject styles into.
+
+Parameter Type: `string`  
+Example: `.into('<span></span>')`  
+__required__
 
 
 ## API Notes
 
 - Simply supply the `inject()` method with an object where the object keys are the tags you want to target, and the values are the styles you want to inject into those targets. 
 
-For example, to inject the style `background-color:#000` into all of the `<li>` tags in your string:
+  For example, to inject the style `background-color:#000` into all of the `<li>` tags in your string:
 
-```js
-var StyleInjector = require('inject-tag-style');
+  ```js
+  var StyleInjector = require('inject-tag-style');
 
-var styles = {li:'background-color:#000'};
-var ulString = '<ul><li>FOO</li<li>BAR</li></ul>';
+  var styles = {li:'background-color:#000'};
+  var ulString = '<ul><li>FOO</li<li>BAR</li></ul>';
 
-var injectedString = StyleInjector().inject(styles).into(ulString);
-//=> <ul><li style='background-color:#000'>FOO</li<li style='background-color:#000'>BAR</li></ul>
-```
+  var injectedString = StyleInjector().inject(styles).into(ulString);
+  //=> <ul><li style='background-color:#000'>FOO</li<li style='background-color:#000'>BAR</li></ul>
+  ```
 
 - You will want to write your styles out exactly how you want them to appear in the style tag. 
 
